@@ -1,5 +1,6 @@
 ### Controllers, URI Design
-For controllers & URI design I generally try to follow the 4 guidelines in Adam Wathan's Cruddy By Design Talk in Laracon 2017
+For controllers & URI design I generally try to follow the 4 guidelines in Adam Wathan's Cruddy By Design Talk in Laracon 2017. 
+Except for the last point where I followed 1 of the comments suggestion
 
 https://github.com/adamwathan/laracon2017/pull/1
 
@@ -7,8 +8,8 @@ https://www.youtube.com/watch?v=MF0jFKvS4SI
 
 https://github.com/adamwathan/laracon2017/blob/master/routes/web.php
 
-I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is very weak
-like I'm not even sure if I should return a silent 200 or success or with a message.etc. But I suppose there are a few standards 
+I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is weak
+like I'm not even sure if I should return a silent 20X on success or with a json message response & what to include.etc. But I suppose there are a few recommended standards 
 we can pick & choose to follow out there
 
 https://leanpub.com/build-apis-you-wont-hate
