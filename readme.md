@@ -50,7 +50,7 @@ However authentication is done via Laravel Passport OAuth2. I never done Passpor
 
 Any good resources on this would be nice or good code samples would be nice.
 
-See tests/Feature/PassportFeaturesTest.php for the test on the different grants
+See tests/Feature/PassportFeaturesTest.php for the test on the different grants. I did not make use of scopes
 
 This test class take up the most time so you may want to not run it.
 
