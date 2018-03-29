@@ -1,3 +1,14 @@
+
+### Installation
+
+```
+mv .env.example .env
+composer install
+php artisan key:generate
+```
+
+And you should be good to go
+
 ### Controllers, URI Design
 For controllers & URI design I generally try to follow the 4 guidelines in Adam Wathan's Cruddy By Design Talk in Laracon 2017. 
 Except for the last point where I followed 1 of the comments suggestion
@@ -9,8 +20,8 @@ https://www.youtube.com/watch?v=MF0jFKvS4SI
 https://github.com/adamwathan/laracon2017/blob/master/routes/web.php
 
 I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is weak 
-especially on what kind of json response I should give. Especially for errors. But I suppose there are some recommended formats out there
-to follow
+especially on what kind of json response I should return. Especially for errors. But I suppose there are some recommended formats out there
+to follow like JSON-API or popular sites example (Twitter, Foursquare.etc)
 
 https://leanpub.com/build-apis-you-wont-hate
 
