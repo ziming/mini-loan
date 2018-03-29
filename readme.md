@@ -1,59 +1,62 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+### Controllers, URI Design
+For controllers & URI design I generally try to follow the 4 guidelines in Adam Wathan's Cruddy By Design Talk in Laracon 2017
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+https://github.com/adamwathan/laracon2017/pull/1
 
-## About Laravel
+https://www.youtube.com/watch?v=MF0jFKvS4SI
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+https://github.com/adamwathan/laracon2017/blob/master/routes/web.php
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is very weak
+like I'm not even sure if I should return a silent 200 or success or with a message.etc. Neither do I know about Swagger.etc
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+https://leanpub.com/build-apis-you-wont-hate
 
-## Learning Laravel
+### Routes
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+See routes/api.php mostly. routes/web.php only contain the Register User route that is produced by `php artisan make:auth`
+so that's not done by me
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### Currency
+I decided to have them as decimal in the database and use Eloquent/QueryBuilder increment() and decrement() method 
+to add/substract at the database SQL level instead of storing them as cents. 
+But thinking back cents seem to be a better choice. Your thoughts?
 
-## Laravel Sponsors
+### TDD, testing
+I adopt the London style of TDD (outside-in) mostly instead of the 
+Chicago style (inside-out). This seem to be the more common style in the 
+Laravel community.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+I only do TDD on the core flows to flesh the api out. It's not thorough
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+I'm not quite sure on the differences between assertJson or assertJsonFragment. I just alternate between them
 
-## Contributing
+I used $this->json('POST', ..., ...) instead of $this->post(...) because of this article that highlights some issues
+with the response code differences
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+https://dyrynda.com.au/blog/testing-json-apis-with-laravel-5
 
-## Security Vulnerabilities
+### Creating Users, Authentication
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Creating a user is done via the normal way via user registration on the register page. Which is already provided by 
 
-## License
+```
+php artisan make:auth
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+So I trust it's implementation and did not test it.
+
+However authentication is done via Laravel Passport OAuth2. I never done Passport/OAuth 2 before so it might be very wrong
+
+Any good resources on this would be nice or good code samples would be nice.
+
+See tests/Feature/PassportFeaturesTest.php for the test on the different grants
+
+This test class take up the most time so you may want to not run it.
+
+
+### Misc Considerations
+
+- Should LoanContract be split into LoanApplication and Loan? I chose to group them together for simplicity. But I'm not 
+sure
+

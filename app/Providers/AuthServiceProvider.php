@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\LoanContract;
+use App\Policies\LoanContractPolicy;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        LoanContract::class => LoanContractPolicy::class,
     ];
 
     /**
@@ -25,6 +29,24 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Passport::routes();
+
+        Passport::tokensExpireIn(now()->addDays(15));
+
+        Passport::refreshTokensExpireIn(now()->addDays(30));
+
+        Passport::enableImplicitGrant();
+
+
+//        Passport::tokensCan([
+//            'approve-loan-contracts' => 'Approve loan contracts',
+//            'un-approve-loan-contracts' => 'Un approve loan contracts'
+//        ]);
+
+        Gate::before(function(User $user) {
+            if ($user->is_admin) {
+                return true;
+            }
+        });
     }
 }

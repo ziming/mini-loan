@@ -14,3 +14,4 @@ yarn-error.log
 scratch.md
 _ide_helper.php
 .phpstorm.meta.php
+.php_cs.cache
