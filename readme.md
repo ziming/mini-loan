@@ -8,9 +8,9 @@ https://www.youtube.com/watch?v=MF0jFKvS4SI
 
 https://github.com/adamwathan/laracon2017/blob/master/routes/web.php
 
-I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is weak
-like I'm not even sure if I should return a silent 20X on success or with a json message response & what to include.etc. But I suppose there are a few recommended standards 
-we can pick & choose to follow out there
+I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is weak 
+especially on what kind of json response I should give. Especially for errors. But I suppose there are some recommended formats out there
+to follow
 
 https://leanpub.com/build-apis-you-wont-hate
 
