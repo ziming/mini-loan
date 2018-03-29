@@ -8,7 +8,8 @@ https://www.youtube.com/watch?v=MF0jFKvS4SI
 https://github.com/adamwathan/laracon2017/blob/master/routes/web.php
 
 I referenced Phil Sturgeon: "Build API You won't hate" a little too but my current understanding of building REST APIs is very weak
-like I'm not even sure if I should return a silent 200 or success or with a message.etc. Neither do I know about Swagger.etc
+like I'm not even sure if I should return a silent 200 or success or with a message.etc. But I suppose there are a few standards 
+we can pick & choose to follow out there
 
 https://leanpub.com/build-apis-you-wont-hate
 
@@ -29,7 +30,7 @@ Laravel community.
 
 I only do TDD on the core flows to flesh the api out. It's not thorough
 
-I'm not quite sure on the differences between assertJson or assertJsonFragment. I just alternate between them
+I'm not quite sure on the differences between assertJson or assertJsonFragment. I just alternate between them & see what works
 
 I used $this->json('POST', ..., ...) instead of $this->post(...) because of this article that highlights some issues
 with the response code differences
@@ -59,4 +60,3 @@ This test class take up the most time so you may want to not run it.
 
 - Should LoanContract be split into LoanApplication and Loan? I chose to group them together for simplicity. But I'm not 
 sure
-
