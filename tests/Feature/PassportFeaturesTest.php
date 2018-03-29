@@ -36,12 +36,12 @@ class PassportFeaturesTest extends TestCase
 
         $this->sitePasswordGrantClient = DB::table('oauth_clients')
             ->select('id', 'secret')
-            ->where('name', sprintf('%s Password Grant Client', env('APP_NAME')))
+            ->where('name', sprintf('%s Password Grant Client', config('app.name')))
             ->first();
 
         $this->sitePersonalAccessClient = DB::table('oauth_clients')
             ->select('id', 'secret')
-            ->where('name', sprintf('%s Personal Access Client', env('APP_NAME')))
+            ->where('name', sprintf('%s Personal Access Client', config('app.name')))
             ->first();
 
     }
