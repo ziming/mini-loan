@@ -8,7 +8,8 @@ class Payment extends Model
 {
     protected $guarded = [];
 
-    public function loanContract() {
+    public function loanContract()
+    {
         return $this->belongsTo(LoanContract::class);
     }
 }

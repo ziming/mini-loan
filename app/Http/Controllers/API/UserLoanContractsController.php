@@ -22,8 +22,11 @@ class UserLoanContractsController extends ApiController
     public function index(int $id)
     {
         // Policy and Gate returns 403 Forbidden if fail
-        abort_if($id !== auth()->id(), 403,
-            'You are unauthorized to view the loan contracts for this user');
+        abort_if(
+            $id !== auth()->id(),
+            403,
+            'You are unauthorized to view the loan contracts for this user'
+        );
 
         return LoanContract::where('user_id', $id)->get();
     }
@@ -37,8 +40,11 @@ class UserLoanContractsController extends ApiController
     public function store(Request $request, int $id)
     {
 
-        abort_if($id !== auth()->id(), 403,
-            'You are not allowed to create a new loan contract for this user');
+        abort_if(
+            $id !== auth()->id(),
+            403,
+            'You are not allowed to create a new loan contract for this user'
+        );
 
         $request->validate([
             'borrowed_amount'     => ['required', 'integer', 'min:5000', 'max:50000'],
@@ -58,6 +64,5 @@ class UserLoanContractsController extends ApiController
         ]);
 
         return $this->respondCreated('Loan Contract Created');
-
     }
 }

@@ -39,6 +39,5 @@ class CreateLoanContractTest extends TestCase
             'days_proposed' => 168,
             'repayment_frequency' => 'weekly',
         ]);
-
     }
 }

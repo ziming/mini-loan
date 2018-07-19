@@ -23,12 +23,13 @@ class LoanContract extends Model
         'amount_to_pay' => 'double',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function payments() {
+    public function payments()
+    {
         return $this->hasMany(Payment::class);
     }
-
 }

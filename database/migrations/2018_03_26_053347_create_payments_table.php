@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->increments('id');
 
             $table->string('type');
-            $table->unsignedDecimal('amount',8, 2);
+            $table->unsignedDecimal('amount', 8, 2);
 
             $table->unsignedInteger('loan_contract_id');
             $table->foreign('loan_contract_id')

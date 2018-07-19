@@ -56,7 +56,6 @@ class LoanContractsController extends ApiController
         $this->authorize('update', $loanContract);
 
         $loanContract->update($validatedData);
-
     }
 
     /**

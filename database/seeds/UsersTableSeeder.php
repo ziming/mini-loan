@@ -16,6 +16,5 @@ class UsersTableSeeder extends Seeder
             ->each(function (\App\User $user) {
                 $user->loanContracts()->saveMany(factory(App\LoanContract::class, 8)->make());
             });
-
     }
 }

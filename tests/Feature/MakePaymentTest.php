@@ -46,10 +46,10 @@ class MakePaymentTest extends TestCase
             'status' => 'approved',
             'amount_paid' => 24.58
         ]);
-
     }
 
-    public function test_user_cannot_make_payment_to_a_approved_loan_contract_that_is_closed() {
+    public function test_user_cannot_make_payment_to_a_approved_loan_contract_that_is_closed()
+    {
 
         $user = factory(User::class)->create();
 
@@ -77,10 +77,10 @@ class MakePaymentTest extends TestCase
             'amount_to_pay' => 88.88,
             'amount_paid' => 88.88
         ]);
-
     }
 
-    public function test_user_cannot_make_an_over_payment_for_an_approved_loan_contract() {
+    public function test_user_cannot_make_an_over_payment_for_an_approved_loan_contract()
+    {
         $user = factory(User::class)->create();
 
         $loanContract = factory(LoanContract::class)->states('approved')->create([
@@ -111,7 +111,8 @@ class MakePaymentTest extends TestCase
     }
 
 
-    public function test_user_cannot_make_payment_if_loan_contract_is_not_hers() {
+    public function test_user_cannot_make_payment_if_loan_contract_is_not_hers()
+    {
 
         $user = factory(User::class)->create();
 

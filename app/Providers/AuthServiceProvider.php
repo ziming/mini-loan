@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
 //            'un-approve-loan-contracts' => 'Un approve loan contracts'
 //        ]);
 
-        Gate::before(function(User $user) {
+        Gate::before(function (User $user) {
             if ($user->is_admin) {
                 return true;
             }

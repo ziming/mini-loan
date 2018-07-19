@@ -29,9 +29,5 @@ class ApprovedLoanContractsController extends ApiController
         $this->authorize('approve', $loanContract);
 
         $loanContract->update(['status' => 'approved']);
-
-
     }
-
-
 }

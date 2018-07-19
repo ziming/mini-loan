@@ -30,9 +30,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function loanContracts() {
+    public function loanContracts()
+    {
         return $this->hasMany(LoanContract::class);
     }
-
-
 }

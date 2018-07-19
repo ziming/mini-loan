@@ -50,6 +50,4 @@ class ApproveLoanContractTest extends TestCase
 
         $this->assertEquals('pending', $loanContract->fresh()->status);
     }
-
-
 }

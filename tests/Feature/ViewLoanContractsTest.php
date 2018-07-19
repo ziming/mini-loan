@@ -51,7 +51,8 @@ class ViewLoanContractsTest extends TestCase
         ]);
     }
 
-    public function test_user_can_view_1_of_her_loan_contracts() {
+    public function test_user_can_view_1_of_her_loan_contracts()
+    {
 
         $user = factory(User::class)->create();
 
@@ -82,10 +83,10 @@ class ViewLoanContractsTest extends TestCase
             'user_id' => $loanContract->user_id,
             'status' => $loanContract->status
         ]);
-
     }
 
-    public function test_user_cannot_view_a_loan_contract_that_is_not_hers() {
+    public function test_user_cannot_view_a_loan_contract_that_is_not_hers()
+    {
 
         $users = factory(User::class, 2)->create();
 
@@ -98,6 +99,5 @@ class ViewLoanContractsTest extends TestCase
         $response = $this->json('get', "/api/loan-contracts/{$loanContract->id}");
 
         $response->assertStatus(403);
-
     }
 }

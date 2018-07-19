@@ -35,11 +35,10 @@ class DeleteLoanContractsTest extends TestCase
         $this->assertDatabaseMissing('loan_contracts', [
             'id' => $loanContract->id
         ]);
-
-
     }
 
-    public function test_user_cannot_delete_another_user_loan_contract() {
+    public function test_user_cannot_delete_another_user_loan_contract()
+    {
 
 
         $user = factory(User::class)->create();
@@ -61,7 +60,8 @@ class DeleteLoanContractsTest extends TestCase
         ]);
     }
 
-    public function test_user_cannot_delete_her_own_non_draft_loan_contract() {
+    public function test_user_cannot_delete_her_own_non_draft_loan_contract()
+    {
 
 
         $user = factory(User::class)->create();
@@ -83,7 +83,5 @@ class DeleteLoanContractsTest extends TestCase
         $this->assertDatabaseHas('loan_contracts', [
             'id' => $loanContract->id
         ]);
-
-
     }
 }

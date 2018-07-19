@@ -36,8 +36,6 @@ class UpdateLoanContractsTest extends TestCase
             'days_proposed' => 168,
             'repayment_frequency' => 'yearly'
         ]);
-
-
     }
 
     public function test_user_cannot_update_someone_else_draft_loan_contracts()
@@ -61,11 +59,10 @@ class UpdateLoanContractsTest extends TestCase
             'days_proposed' => $loanContract->days_proposed,
             'repayment_frequency' => $loanContract->repayment_frequency
         ]);
-
-
     }
 
-    public function test_user_cannot_update_own_non_draft_loan_contracts() {
+    public function test_user_cannot_update_own_non_draft_loan_contracts()
+    {
 
         $user = factory(User::class)->create();
         Passport::actingAs($user);
@@ -89,6 +86,4 @@ class UpdateLoanContractsTest extends TestCase
             'repayment_frequency' => $loanContract->repayment_frequency
         ]);
     }
-
-
 }

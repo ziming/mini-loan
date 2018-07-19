@@ -20,7 +20,6 @@ $factory->define(App\LoanContract::class, function (Faker $faker) {
 
         'amount_to_pay' => $borrowedAmount * (1 + ($interestRate / 100)),
     ];
-
 });
 
 $factory->state(App\LoanContract::class, 'draft', function (Faker $faker) {

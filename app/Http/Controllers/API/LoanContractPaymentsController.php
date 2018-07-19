@@ -36,8 +36,12 @@ class LoanContractPaymentsController extends ApiController
 
         $this->authorize('make-payment', $loanContract);
 
-        $maxAmountToPay = number_format($loanContract->amount_to_pay - $loanContract->amount_paid,
-            2, '.', '');
+        $maxAmountToPay = number_format(
+            $loanContract->amount_to_pay - $loanContract->amount_paid,
+            2,
+            '.',
+            ''
+        );
 
 //        dump($maxAmountToPay, request('amount'));
 
@@ -71,8 +75,5 @@ class LoanContractPaymentsController extends ApiController
         });
 
         return $this->respondCreated('Payment Made!');
-
-
     }
-
 }

@@ -43,7 +43,6 @@ class PassportFeaturesTest extends TestCase
             ->select('id', 'secret')
             ->where('name', sprintf('%s Personal Access Client', config('app.name')))
             ->first();
-
     }
 
     /**
@@ -75,10 +74,10 @@ class PassportFeaturesTest extends TestCase
             ->assertJson([
                 'token_type' => 'Bearer'
             ]);
-
     }
 
-    public function test_signed_in_user_can_create_oauth_client() {
+    public function test_signed_in_user_can_create_oauth_client()
+    {
 
         $user = factory(User::class)->create();
 
@@ -106,11 +105,10 @@ class PassportFeaturesTest extends TestCase
         $response->assertJsonFragment([
             'user_id' => $user->id
         ]);
-
-
     }
 
-    public function test_signed_in_user_can_get_all_her_oauth_clients() {
+    public function test_signed_in_user_can_get_all_her_oauth_clients()
+    {
 
         $user = factory(User::class)->create();
 
@@ -153,11 +151,10 @@ class PassportFeaturesTest extends TestCase
                 'user_id' => $user->id
             ]
         ]);
-
-
     }
 
-    public function test_user_can_request_implicit_grant_token() {
+    public function test_user_can_request_implicit_grant_token()
+    {
 
         $user = factory(User::class)->create();
 
@@ -182,10 +179,10 @@ class PassportFeaturesTest extends TestCase
         // ... is requesting permission to access your account.
 
         $response->assertSee(' is requesting permission to access your account.');
-
     }
 
-    public function test_user_can_request_authorization_code_grant_token() {
+    public function test_user_can_request_authorization_code_grant_token()
+    {
 
         $user = factory(User::class)->create();
 
@@ -211,11 +208,10 @@ class PassportFeaturesTest extends TestCase
 
 //        $response->dump();
         $response->assertSee(' is requesting permission to access your account.');
-
-
     }
 
-    public function test_machine_user_can_perform_client_credentials_grant() {
+    public function test_machine_user_can_perform_client_credentials_grant()
+    {
         // machine to machine typically
 
         $user = factory(User::class)->create();
@@ -237,10 +233,10 @@ class PassportFeaturesTest extends TestCase
             'expires_in',
             'access_token',
         ]);
-
     }
 
-    public function test_user_can_request_refresh_token_grant() {
+    public function test_user_can_request_refresh_token_grant()
+    {
 
         $this->markTestSkipped();
 
@@ -264,7 +260,8 @@ class PassportFeaturesTest extends TestCase
         $response->dump();
     }
 
-    private function log_in_and_create_client_for_user(User $user) : TestResponse {
+    private function log_in_and_create_client_for_user(User $user) : TestResponse
+    {
 
         $this->actingAs($user);
 
@@ -273,6 +270,4 @@ class PassportFeaturesTest extends TestCase
             'redirect' => 'http://localhost'
         ]);
     }
-
-
 }
